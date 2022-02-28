@@ -20,7 +20,7 @@ This Module has the following folder structure:
 * [root](): This folder contains a root module.
 * [examples](examples): This folder contains examples of how to use the module:
   - [Joomla single-node + custom network injected into module](examples/joomla-single-mds-use-existing-network): This is an example of how to use the oci-arch-joomla module to deploy Joomla (single-node) with MDS and network cloud infrastrucutre elements injected into the module.
-  - [Joola multi-node + custom network injected into module](examples/joomla-ha-mds-use-existing-network): This is an example of how to use the oci-arch-joomla module to deploy Joomla HA (multi-node) with MDS and network cloud infrastrucutre elements injected into the module.
+  - [Joomla multi-node + custom network injected into module](examples/joomla-ha-mds-use-existing-network): This is an example of how to use the oci-arch-joomla module to deploy Joomla HA (multi-node) with MDS and network cloud infrastrucutre elements injected into the module.
   
 To deploy Joomla using this Module with minimal effort use this:
 

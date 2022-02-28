@@ -1,4 +1,4 @@
-## Create Joomla multi-node + custom network injected into module
+## Create Joomla single-node + custom network injected into module
 This is an example of how to use the oci-arch-joomla module to deploy Joomla (single-node) with MDS and network cloud infrastrucutre elements injected into the module..
   
 ### Using this example
