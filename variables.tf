@@ -205,6 +205,7 @@ locals {
 }
 
 variable "defined_tags" {
-  description = "Defined tags for Joomla host."
-  default     = ""
+  description = "Defined tags for WordPress host."
+  type        = map(string)
+  default     = {}
 }
