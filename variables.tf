@@ -55,7 +55,7 @@ variable "subnet_id" {
 
 variable "shape" {
   description = "Instance shape to use for master instance. "
-  default     = "VM.Standard2.1"
+  default     = "VM.Standard.E4.Flex"
 }
 
 variable "lb_shape" {
