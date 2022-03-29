@@ -2,24 +2,29 @@
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
 output "joomla_home_URL" {
-  value = "http://${module.joomla.public_ip[0]}/"
+  value = "http://${module.oci-arch-joomla.public_ip[0]}/"
+}
+
+output "joomla_administrator_URL" {
+  value = "http://${module.oci-arch-joomla.public_ip[0]}/administrator/"
 }
 
 output "generated_ssh_private_key" {
-  value     = module.joomla.generated_ssh_private_key
+  value     = module.oci-arch-joomla.generated_ssh_private_key
   sensitive = true
 }
 
-output "joomla_name" {
-  value = var.joomla_name
+output "generated_ssh_public_key" {
+  value     = module.oci-arch-joomla.generated_ssh_public_key
+  sensitive = true
 }
 
-output "joomla_password" {
+output "joomla_admin" {
+  value = "admin"
+}
+
+output "joomla_admin_password" {
   value = var.joomla_password
-}
-
-output "joomla_database" {
-  value = var.joomla_schema
 }
 
 output "mds_instance_ip" {

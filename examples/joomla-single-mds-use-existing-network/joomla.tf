@@ -1,7 +1,7 @@
 ## Copyright (c) 2022, Oracle and/or its affiliates. 
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
-module "joomla" {
+module "oci-arch-joomla" {
   source                    = "github.com/oracle-devrel/terraform-oci-arch-joomla"
   tenancy_ocid              = var.tenancy_ocid
   vcn_id                    = oci_core_virtual_network.joomla_mds_vcn.id
