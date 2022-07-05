@@ -54,10 +54,10 @@ data "template_cloudinit_config" "cloud_init" {
 }
 
 locals {
-  php_script       = "~/install_php74.sh"
-  security_script  = "~/configure_local_security.sh"
-  create_joomla_db = "~/create_joomla_db.sh"
-  install_joomla   = "~/install_joomla.sh"
+  php_script       = "/home/${var.vm_user}/install_php74.sh"
+  security_script  = "/home/${var.vm_user}/configure_local_security.sh"
+  create_joomla_db = "/home/${var.vm_user}/create_joomla_db.sh"
+  install_joomla   = "/home/${var.vm_user}/install_joomla.sh"
 }
 
 data "oci_core_subnet" "joomla_subnet_ds" {
@@ -335,6 +335,9 @@ resource "oci_core_public_ip" "Joomla_public_ip_for_single_node" {
   #  private_ip_id  = var.numberOfNodes == 1 ? data.oci_core_private_ips.Joomla_private_ips1.private_ips[0]["id"] : null
   private_ip_id = data.oci_core_private_ips.Joomla_private_ips1.private_ips[0]["id"]
   defined_tags  = var.defined_tags
+  lifecycle {
+    ignore_changes = [defined_tags]
+  }
 }
 
 resource "oci_core_public_ip" "Joomla_public_ip_for_multi_node" {
@@ -343,6 +346,9 @@ resource "oci_core_public_ip" "Joomla_public_ip_for_multi_node" {
   display_name   = "Joomla_public_ip_for_multi_node"
   lifetime       = "RESERVED"
   defined_tags   = var.defined_tags
+  lifecycle {
+    ignore_changes = [defined_tags]
+  }
 }
 
 data "template_file" "install_joomla" {
