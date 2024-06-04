@@ -62,8 +62,13 @@ if [[ $use_shared_storage == "true" ]]; then
   sed -i "s/\$cache_handler = 'file'/\$cache_handler = ''/" ${joomla_shared_working_dir}/installation/configuration.php-dist
   mv ${joomla_shared_working_dir}/installation/configuration.php-dist ${joomla_shared_working_dir}/configuration.php
   sed -i "s/#__/$DBPREFIX/" ${joomla_shared_working_dir}/installation/sql/mysql/base.sql
+  sed -i "s/#__/$DBPREFIX/" ${joomla_shared_working_dir}/installation/sql/mysql/extensions.sql
+  sed -i "s/#__/$DBPREFIX/" ${joomla_shared_working_dir}/installation/sql/mysql/supports.sql
+
   mysqlsh --user $DBUSER --password=$DBPASS --host $DBHOST --database=$DBNAME --sql --file ${joomla_shared_working_dir}/installation/sql/mysql/base.sql
-  
+  mysqlsh --user $DBUSER --password=$DBPASS --host $DBHOST --database=$DBNAME --sql --file ${joomla_shared_working_dir}/installation/sql/mysql/extensions.sql
+  mysqlsh --user $DBUSER --password=$DBPASS --host $DBHOST --database=$DBNAME --sql --file ${joomla_shared_working_dir}/installation/sql/mysql/supports.sql
+    
   mysqlsh --user $DBUSER --password=$DBPASS --host $DBHOST --database=$DBNAME --sql -e "INSERT INTO \`${joomla_prefix}users\` (\`id\`, \`name\`, \`username\`, \`email\`, \`password\`, \`block\`, \`sendEmail\`, \`registerDate\`, \`lastvisitDate\`, \`activation\`, \`params\`, \`lastResetTime\`, \`resetCount\`, \`otpKey\`, \`otep\`, \`requireReset\`) VALUES ('2', 'Me', '${joomla_console_user}', '${joomla_console_email}', '${joomla_console_password}', '0', '0', CURDATE(), CURDATE(), '', '', CURDATE() , '0', '', '', '0');" 
   mysqlsh --user $DBUSER --password=$DBPASS --host $DBHOST --database=$DBNAME --sql -e "SELECT * from \`${joomla_prefix}users\`;"
   mysqlsh --user $DBUSER --password=$DBPASS --host $DBHOST --database=$DBNAME --sql -e "INSERT INTO \`${joomla_prefix}user_usergroup_map\` (\`user_id\`, \`group_id\`) VALUES ('2', '8');"    
@@ -89,7 +94,12 @@ else
   sed -i "s/\$cache_handler = 'file'/\$cache_handler = ''/" /var/www/html/installation/configuration.php-dist
   mv /var/www/html/installation/configuration.php-dist /var/www/html/configuration.php
   sed -i "s/#__/$DBPREFIX/" /var/www/html/installation/sql/mysql/base.sql
+  sed -i "s/#__/$DBPREFIX/" /var/www/html/installation/sql/mysql/extensions.sql
+  sed -i "s/#__/$DBPREFIX/" /var/www/html/installation/sql/mysql/supports.sql
+
   mysqlsh --user $DBUSER --password=$DBPASS --host $DBHOST --database=$DBNAME --sql --file /var/www/html/installation/sql/mysql/base.sql
+  mysqlsh --user $DBUSER --password=$DBPASS --host $DBHOST --database=$DBNAME --sql --file /var/www/html/installation/sql/mysql/extensions.sql
+  mysqlsh --user $DBUSER --password=$DBPASS --host $DBHOST --database=$DBNAME --sql --file /var/www/html/installation/sql/mysql/supports.sql
 
   mysqlsh --user $DBUSER --password=$DBPASS --host $DBHOST --database=$DBNAME --sql -e "INSERT INTO \`${joomla_prefix}users\` (\`id\`, \`name\`, \`username\`, \`email\`, \`password\`, \`block\`, \`sendEmail\`, \`registerDate\`, \`lastvisitDate\`, \`activation\`, \`params\`, \`lastResetTime\`, \`resetCount\`, \`otpKey\`, \`otep\`, \`requireReset\`) VALUES ('5', 'Me', '${joomla_console_user}', '${joomla_console_email}', '${joomla_console_password}', '0', '0', CURDATE(), CURDATE(), '', '', CURDATE() , '0', '', '', '0');" 
   mysqlsh --user $DBUSER --password=$DBPASS --host $DBHOST --database=$DBNAME --sql -e "SELECT * from \`${joomla_prefix}users\`;"
