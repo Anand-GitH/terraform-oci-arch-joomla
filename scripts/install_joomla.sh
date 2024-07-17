@@ -18,9 +18,9 @@ else
   cd /var/www/html
 fi
 
-wget https://downloads.joomla.org/us/cms/joomla5/5-1-2/Joomla_5-1-2-Stable-Full_Package.tar.gz
-tar zxvf Joomla_5-1-2-Stable-Full_Package.tar.gz
-rm -rf Joomla_5-1-2-Stable-Full_Package.tar.gz
+wget https://downloads.joomla.org/cms/joomla5/5-1-1/Joomla_5-1-1-Stable-Full_Package.tar.gz
+tar zxvf Joomla_5-1-1-Stable-Full_Package.tar.gz
+rm -rf Joomla_5-1-1-Stable-Full_Package.tar.gz
 if [[ $use_shared_storage == "true" ]]; then
 	cp ${joomla_shared_working_dir}/htaccess.txt ${joomla_shared_working_dir}/.htaccess
   chown apache:apache -R ${joomla_shared_working_dir}
