@@ -18,7 +18,9 @@ else
   cd /var/www/html
 fi
 
-wget https://downloads.joomla.org/cms/joomla5/5-1-1/Joomla_5-1-1-Stable-Full_Package.tar.gz
+#wget https://downloads.joomla.org/cms/joomla5/5-1-1/Joomla_5-1-1-Stable-Full_Package.tar.gz
+wget https://downloads.joomla.org/cms/joomla5/5-3-1/Joomla_5-3-1-Stable-Full_Package.tar.gz
+
 tar zxvf Joomla_5-1-1-Stable-Full_Package.tar.gz
 rm -rf Joomla_5-1-1-Stable-Full_Package.tar.gz
 if [[ $use_shared_storage == "true" ]]; then
